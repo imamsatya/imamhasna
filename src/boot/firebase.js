@@ -13,14 +13,14 @@ export default ({
 }) => {
   // something to do
   const firebaseConfig = {
-    apiKey: 'AIzaSyAwwV17qnFlRftlFxItx5BLKgJXn6un4uA',
-    authDomain: 'imam-hasna.firebaseapp.com',
-    databaseURL: 'https://imam-hasna.firebaseio.com',
-    projectId: 'imam-hasna',
-    storageBucket: 'imam-hasna.appspot.com',
-    messagingSenderId: '152751636011',
-    appId: '1:152751636011:web:765336b75f814e6a7c346e',
-    measurementId: 'G-PB6JNFBPH4'
+    apiKey: 'XXXXX',
+    authDomain: 'XXXXX',
+    databaseURL: 'XXXXX',
+    projectId: 'XXXXX',
+    storageBucket: 'XXXXX',
+    messagingSenderId: 'XXXXX',
+    appId: 'XXXXX',
+    measurementId: 'XXXXX'
   }
 
   firebase.initializeApp(firebaseConfig)
