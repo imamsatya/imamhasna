@@ -1,29 +1,8 @@
 <template>
-
-  <div id="q-app">
-    <s-preloader />
-    <transition appear>
-
-      <router-view />
-    </transition>
-
-     <!-- <div >Loading </div> -->
-  </div>
+  <router-view />
 </template>
 
-<script >
-
-export default {
-  name: 'App',
-  data () {
-    return {
-      // tes:true
-    }
-  },
-  mounted () {
-    // this.tes=false
-  }
-
-  }
-
+<script setup lang="ts">
+// Main App component - Quasar v2/Vue 3
+// Router view handles all page rendering
 </script>

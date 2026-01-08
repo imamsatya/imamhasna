@@ -1,55 +1,33 @@
-import { RouteConfig } from 'vue-router'
+import { RouteRecordRaw } from 'vue-router'
 
-const routes: RouteConfig[] = [
-  // {
-  //   path: '/',
-  //   component: () => import('layouts/MainLayout.vue'),
-  //   children: [{ path: '', component: () => import('pages/Index.vue') }]
-  // },
+const routes: RouteRecordRaw[] = [
   {
     path: '/',
     component: () => import('layouts/MyLayout.vue'),
-    children: [{
-      path: '',
-      component: () => import('pages/Home.vue')
-    }]
+    children: [
+      {
+        path: '',
+        component: () => import('pages/Home.vue')
+      }
+    ]
   },
-  // {
-  //   path: '/2',
-  //   component: () => import('layouts/MyLayout.vue'),
-  //   children: [{
-  //     path: '',
-  //     component: () => import('pages/Home2.vue')
-  //   }]
-  // },
-
   {
     path: '/login',
     name: 'login',
     component: () => import('pages/Login.vue')
-    // children: [{
-    //   path: '',
-    //   component: () => import('pages/S-Login.vue')
-    // }]
   },
-  // {
-  //   path: '/artikel',
-  //   component: () => import('layouts/MyLayout.vue'),
-  //   children: [{
-  //     path: '',
-  //     component: () => import('pages/Artikel.vue')
-  //   }]
-  // },
-   {
+  {
     path: '/form',
     meta: {
       admin: true
     },
     component: () => import('layouts/A-Layout.vue'),
-    children: [{
-      path: '',
-      component: () => import('pages/Form.vue')
-    }]
+    children: [
+      {
+        path: '',
+        component: () => import('pages/Form.vue')
+      }
+    ]
   },
   {
     path: '/tabel',
@@ -57,10 +35,12 @@ const routes: RouteConfig[] = [
       admin: true
     },
     component: () => import('layouts/A-Layout.vue'),
-    children: [{
-      path: '',
-      component: () => import('pages/Tabel.vue')
-    }]
+    children: [
+      {
+        path: '',
+        component: () => import('pages/Tabel.vue')
+      }
+    ]
   },
   {
     path: '/about',
@@ -68,20 +48,20 @@ const routes: RouteConfig[] = [
       admin: true
     },
     component: () => import('layouts/A-Layout.vue'),
-    children: [{
-      path: '',
-      component: () => import('pages/About.vue')
-    }]
-  }
+    children: [
+      {
+        path: '',
+        component: () => import('pages/About.vue')
+      }
+    ]
+  },
 
-]
-
-// Always leave this as last one
-if (process.env.MODE !== 'ssr') {
-  routes.push({
-    path: '*',
+  // Always leave this as last one,
+  // but you can also remove it
+  {
+    path: '/:catchAll(.*)*',
     component: () => import('pages/Error404.vue')
-  })
-}
+  }
+]
 
 export default routes

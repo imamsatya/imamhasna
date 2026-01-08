@@ -1,23 +1,35 @@
 import { boot } from 'quasar/wrappers'
+import { createI18n } from 'vue-i18n'
+
 import messages from 'src/i18n'
-import Vue from 'vue'
-import VueI18n from 'vue-i18n'
 
-declare module 'vue/types/vue' {
-  interface Vue {
-    i18n: VueI18n;
-  }
+export type MessageLanguages = keyof typeof messages
+// Type-define 'en-US' as the primary schema for i18n
+export type MessageSchema = (typeof messages)['en-US']
+
+// See https://vue-i18n.intlify.dev/guide/advanced/typescript.html#global-resource-schema-type-definition
+/* eslint-disable @typescript-eslint/no-empty-interface */
+declare module 'vue-i18n' {
+  // define the locale messages schema
+  export interface DefineLocaleMessage extends MessageSchema { }
+
+  // define the datetime format schema
+  export interface DefineDateTimeFormat { }
+
+  // define the number format schema
+  export interface DefineNumberFormat { }
 }
+/* eslint-enable @typescript-eslint/no-empty-interface */
 
-Vue.use(VueI18n)
-
-export const i18n = new VueI18n({
-  locale: 'en-us',
-  fallbackLocale: 'en-us',
+const i18n = createI18n<[MessageSchema], MessageLanguages>({
+  locale: 'en-US',
+  legacy: false,
   messages
 })
 
 export default boot(({ app }) => {
   // Set i18n instance on app
-  app.i18n = i18n
+  app.use(i18n)
 })
+
+export { i18n }
