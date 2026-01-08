@@ -1,5 +1,6 @@
 <template>
   <q-layout view="lHh Lpr lFf">
+    <FallingSakura v-if="sakura" />
     <q-header elevated>
       <link
         rel="stylesheet"
@@ -65,6 +66,7 @@
 <script setup lang="ts">
 import { computed } from "vue";
 import { useThingsStore } from "src/stores/things";
+import FallingSakura from "src/components/FallingSakura.vue";
 
 const thingsStore = useThingsStore();
 
@@ -77,6 +79,7 @@ const animateX = computed({
   get: () => thingsStore.animatedName,
   set: (val: string | null) => thingsStore.setAnimatedName(val),
 });
+const sakura = computed(() => thingsStore.isSakura);
 </script>
 
 <style lang="sass" scoped>

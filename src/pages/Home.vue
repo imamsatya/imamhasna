@@ -723,11 +723,16 @@
     <!-- floating button -->
 
     <q-page-sticky position="bottom-right" :offset="[18, 18]">
-      <q-fab icon="music_note" glossy direction="up" color="negative">
+      <q-fab icon="favorite" glossy direction="up" color="negative">
         <q-fab-action
           @click="toggleMusic()"
           color="primary"
           :icon="iconStatus"
+        />
+        <q-fab-action
+          @click="toggleSakura()"
+          color="pink"
+          icon="local_florist"
         />
       </q-fab>
     </q-page-sticky>
@@ -910,6 +915,10 @@ function toggleMusic() {
   }
 }
 
+function toggleSakura() {
+  thingsStore.setIsSakura(!thingsStore.isSakura);
+}
+
 function clearPesan() {
   siapa.value = "";
   pesan.value = "";
@@ -1026,6 +1035,11 @@ onMounted(() => {
   height: 470px
   max-height: 470px
   border-radius: 20px
+  background: rgba(255, 255, 255, 0.75) !important
+  backdrop-filter: blur(8px)
+  -webkit-backdrop-filter: blur(8px)
+  border: 1px solid rgba(255, 255, 255, 0.4)
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.1) !important
 
 .my-card
   width: 350px
