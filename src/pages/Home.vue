@@ -956,6 +956,27 @@ async function kirim() {
 
 // Lifecycle
 onMounted(() => {
+  // Preload Assets (Music & Images)
+  const assets = [
+    "/1or.m4a",
+    "/3or.m4a",
+    new URL("../statics/Gif/pichu2.gif", import.meta.url).href,
+    new URL("../statics/Gif/pichu3.gif", import.meta.url).href,
+    new URL("../statics/Gif/pikachu.gif", import.meta.url).href,
+    new URL("../statics/a1.png", import.meta.url).href,
+    new URL("../statics/muslimah1.png", import.meta.url).href,
+  ];
+
+  assets.forEach((src) => {
+    if (src.endsWith(".m4a") || src.endsWith(".mp3")) {
+      const a = new Audio(src);
+      a.load();
+    } else {
+      const i = new Image();
+      i.src = src;
+    }
+  });
+
   // Auto-play music on mount (toggle twice to start)
   toggleMusic();
   toggleMusic();

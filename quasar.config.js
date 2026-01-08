@@ -61,6 +61,7 @@ export default configure((/* ctx */) => {
       // publicPath: '/',
       // analyze: true,
       // env: {},
+
       // rawDefine: {}
       // ignorePublicFolder: true,
       // minify: false,
@@ -72,7 +73,11 @@ export default configure((/* ctx */) => {
 
       // vitePlugins: [
       //   [ 'package-name', { ..options.. } ]
-      // ]
+      // ],
+
+      htmlMinifyOptions: {
+        removeComments: false
+      }
     },
 
     // Full list of options: https://v2.quasar.dev/quasar-cli-vite/quasar-config-file#devServer
