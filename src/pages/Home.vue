@@ -723,7 +723,7 @@
     <!-- floating button -->
 
     <q-page-sticky position="bottom-right" :offset="[18, 18]">
-      <q-fab icon="favorite" glossy direction="up" color="negative">
+      <q-fab icon="favorite" glossy direction="up" color="pink">
         <q-fab-action
           @click="toggleMusic()"
           color="primary"
@@ -734,6 +734,13 @@
           color="pink"
           icon="local_florist"
         />
+        <!-- Game button hidden for now
+        <q-fab-action
+          @click="showGame = true"
+          color="orange"
+          icon="sports_esports"
+        />
+        -->
       </q-fab>
     </q-page-sticky>
 
@@ -826,6 +833,11 @@
         </q-card-actions>
       </q-card>
     </q-dialog>
+    <!-- Game dialog hidden for now
+    <q-dialog v-model="showGame" maximized>
+      <PichuGame :pesans="pesans" @close="showGame = false" />
+    </q-dialog>
+    -->
   </div>
 </template>
 
@@ -842,11 +854,13 @@ import {
 import { db } from "src/boot/firebase";
 import { useThingsStore } from "src/stores/things";
 import SPesan from "src/components/S-Pesan.vue";
+import PichuGame from "src/components/PichuGame.vue";
 
 const $q = useQuasar();
 const thingsStore = useThingsStore();
 
 // Reactive data
+const showGame = ref(false);
 const tamuwalimah = ref("Tamu Bapak Ngadino dan Bu Wulan");
 const sesiwalimah = ref("Sesi 1 | 11:00 - 12:00");
 const mapWalimah = ref(false);
